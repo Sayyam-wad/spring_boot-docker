@@ -11,5 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
       - name: Build Docker image
-        run: cd coursera-spring-hello-world && docker build -t spring-boot-app:latest .
+        uses: docker/build-push-action@v5
+        with:
+          context: ./coursera-spring-hello-world
+          push: false
+          tags: spring-boot-app:latest
