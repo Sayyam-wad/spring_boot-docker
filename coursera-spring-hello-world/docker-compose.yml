@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  app:
+    image: spring-boot-app-image
+    build:
+      context: .
+      dockerfile: ./Docker/Dockerfile
+    ports:
+      - "80:80"
