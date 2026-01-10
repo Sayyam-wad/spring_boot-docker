@@ -11,12 +11,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Build with Maven
+        run: |
+          cd coursera-spring-hello-world
+          mvn clean package -DskipTests
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       - name: Build Docker image
         uses: docker/build-push-action@v5
         with:
           context: ./coursera-spring-hello-world
-          dockerfile: ./Docker/Dockerfile
+          file: ./coursera-spring-hello-world/Docker/Dockerfile
           push: false
           tags: spring-boot-app:latest
