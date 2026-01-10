@@ -17,5 +17,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./coursera-spring-hello-world
+          dockerfile: ./coursera-spring-hello-world/Docker/Dockerfile
           push: false
           tags: spring-boot-app:latest
